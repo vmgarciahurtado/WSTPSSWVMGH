@@ -1,6 +1,7 @@
 package com.example.victorm.tsppsp.principal;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.victorm.tsppsp.R;
 import com.example.victorm.tsppsp.adapter.ProyectosAdapter;
@@ -69,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new ProyectosAdapter(listaProyectos);
         recyclerViewProyectos.setAdapter(adapter);
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getApplicationContext(),"Seleccion: " +listaProyectos.get(recyclerViewProyectos.getChildAdapterPosition(v)).getNombre(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,Principal.class);
+                Bundle miBundle = new Bundle();
+                String dato = listaProyectos.get(recyclerViewProyectos.getChildAdapterPosition(v)).getNombre();
+                miBundle.putString("nombre",dato);
+                intent.putExtra("datos",miBundle);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     private void registrarProyecto() {
@@ -78,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
         Long resultado=db.insert(Datos.TABLA_PROYECTOS,Datos.CAMPO_NOMBRE,values);
         db.close();
         consultarProyectos();
+        campoNombre.setText("");
+        Toast.makeText(getApplicationContext(),"¡¡ Registro exitoso !!",Toast.LENGTH_SHORT).show();
     }
 
 

@@ -4,33 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".principal.Principal">
+    tools:context=".principal.Principal"
+    android:layout_weight="2">
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="133dp"
+        android:layout_marginTop="33dp"
         android:orientation="vertical"
         android:layout_marginBottom="22dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:text="Hola mundo"
+            android:textSize="22dp"
+            android:id="@+id/tituloProyeto"
+            android:textColor="#000"
+            android:gravity="center"/>
+
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:id="@+id/btnProject"
+            android:textColor="#fff"
             android:text="Project Plan SUmary"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:background="@color/common_green"
+            android:onClick="project"/>
 
         <Button
             android:layout_width="match_parent"
+            android:id="@+id/btnDefectlog"
             android:layout_height="72dp"
+            android:textColor="#fff"
             android:text="Defect Log"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:background="@color/common_green"
+            android:onClick="project"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:id="@+id/btnTimeLog"
+            android:textColor="#fff"
             android:text="Time log"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:background="@color/common_green"
+            android:onClick="project"/>
 
     </LinearLayout>
 
