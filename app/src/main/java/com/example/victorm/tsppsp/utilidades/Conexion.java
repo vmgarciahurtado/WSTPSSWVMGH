@@ -10,12 +10,17 @@ public class Conexion extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(Datos.CREAR_TABLA_TIMELOG);
+        db.execSQL(Datos.CREAR_TABLA_DEFECTLOG);
+        db.execSQL(Datos.CREAR_TABLA_PROYECTOS);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS " + Datos.TABLA_TIMELOG);
+        db.execSQL("DROP TABLE IF EXISTS " + Datos.TABLA_DEFECTLOG);
+        db.execSQL("DROP TABLE IF EXISTS " + Datos.TABLA_PROYECTOS);
+        onCreate(db);
     }
 }

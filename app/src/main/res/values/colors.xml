@@ -2,5 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#000000</color>
+    <color name="common_green">#328f1e</color>
+    <color name="ec_text_login_email">#98df6a30</color>
 </resources>
