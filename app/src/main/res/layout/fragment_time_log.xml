@@ -21,7 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TableRow android:gravity="center">
+        <TableRow
+            android:layout_marginBottom="22dp"
+            android:gravity="center">
 
             <Spinner
                 android:id="@+id/spinnerFase"
@@ -33,30 +35,37 @@
 
             <Button
                 android:id="@+id/btnStartTimeLog"
-                android:layout_width="190dp"
+                android:layout_width="match_parent"
                 android:layout_height="42dp"
+                android:layout_marginRight="113dp"
                 android:background="@color/common_green"
                 android:text="start"
                 android:textColor="#fff" />
 
             <TextView
-                android:layout_width="222dp"
+                android:id="@+id/campoStartTimelog"
+                android:layout_width="15dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="23dp"
+                android:layout_marginLeft="-93dp"
+                android:layout_marginRight="150dp"
+                android:background="@color/colorPrimary"
                 android:text="START"
                 android:textColor="#000"
                 android:textSize="23dp" />
         </TableRow>
 
-        <TableRow android:layout_marginTop="12dp"
+        <TableRow
+            android:layout_marginTop="12dp"
             android:gravity="center">
-            <TextView
-                android:layout_width="222dp"
+
+            <EditText
+                android:id="@+id/txtInterruptionTimelog"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginLeft="23dp"
-                android:text="INTERRUPTION"
+                android:hint="INTERRUPTION"
+                android:inputType="number"
                 android:textColor="#000"
                 android:textSize="23dp" />
         </TableRow>
@@ -65,48 +74,70 @@
 
             <Button
                 android:id="@+id/btnStopTimeLog"
-                android:layout_width="211dp"
+                android:layout_width="140dp"
                 android:layout_height="42dp"
+                android:layout_marginRight="113dp"
                 android:background="@color/common_green"
                 android:text="stop"
                 android:textColor="#fff" />
 
             <TextView
-                android:layout_width="222dp"
+                android:id="@+id/campoStopTimelog"
+                android:layout_width="172dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="23dp"
-                android:text="START"
+                android:layout_marginLeft="-93dp"
+                android:layout_marginRight="150dp"
+                android:background="@color/colorPrimary"
+                android:text="STOP"
                 android:textColor="#000"
                 android:textSize="23dp" />
         </TableRow>
 
 
-        <TableRow android:layout_marginTop="12dp"
+        <TableRow
+            android:layout_marginTop="12dp"
             android:gravity="center">
+
             <TextView
+                android:id="@+id/campoDeltaTimelog"
                 android:layout_width="222dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginLeft="23dp"
+                android:gravity="center"
                 android:text="DELTA"
                 android:textColor="#000"
                 android:textSize="23dp" />
         </TableRow>
 
-        <TableRow android:layout_marginTop="12dp"
+        <TableRow
+            android:layout_marginTop="12dp"
             android:gravity="center">
-            <TextView
+
+            <EditText
+                android:id="@+id/txtComentarioTimelog"
                 android:layout_width="222dp"
-                android:layout_height="122dp"
-                android:gravity="center"
+                android:layout_height="52dp"
                 android:layout_marginLeft="23dp"
-                android:text="COMMENTS"
+                android:gravity="center"
+                android:hint="COMMENTS"
+                android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="23dp" />
         </TableRow>
 
+        <TableRow
+            android:layout_marginTop="40dp"
+            android:layout_weight="1">
 
+            <Button
+                android:id="@+id/btnRegistrarTimeLog"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:background="@color/common_green"
+                android:text="SAVE"
+                android:textColor="#fff" />
+        </TableRow>
     </TableLayout>
 
 </LinearLayout>

@@ -7,8 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.victorm.tsppsp.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +35,41 @@ public class DefectLog extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    String type;
+    String phaseInjected;
+    String phaseRemoved;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getPhaseInjected() {
+        return phaseInjected;
+    }
+
+    public void setPhaseInjected(String phaseInjected) {
+        this.phaseInjected = phaseInjected;
+    }
+
+    public String getPhaseRemoved() {
+        return phaseRemoved;
+    }
+
+    public void setPhaseRemoved(String phaseRemoved) {
+        this.phaseRemoved = phaseRemoved;
+    }
+
+    ArrayList<String>ArrayType;
+    ArrayList<String>ArrayPhaseInjected;
+    ArrayList<String>ArrayPhaseRemoved;
+
+    Spinner listaType;
+    Spinner listaPhaseRemoved;
+    Spinner listaPhaseInjected;
     public DefectLog() {
         // Required empty public constructor
     }
@@ -64,8 +104,92 @@ public class DefectLog extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_defect_log, container, false);
+        View vista = inflater.inflate(R.layout.fragment_defect_log, container, false);
+
+        ArrayType = new ArrayList<>();
+        ArrayType.add("Type");
+        ArrayType.add("Documentation");
+        ArrayType.add("Syntax");
+        ArrayType.add("Build");
+        ArrayType.add("Package");
+        ArrayType.add("Assigment");
+        ArrayType.add("Interface");
+        ArrayType.add("Checking");
+        ArrayType.add("Data");
+        ArrayType.add("Funtion");
+        ArrayType.add("System");
+        ArrayType.add("Environment");
+
+        ArrayPhaseInjected = new ArrayList<>();
+        ArrayPhaseInjected.add("Phase injected");
+        ArrayPhaseInjected.add("PLAN");
+        ArrayPhaseInjected.add("DLD");
+        ArrayPhaseInjected.add("CODE");
+        ArrayPhaseInjected.add("COMPILE");
+        ArrayPhaseInjected.add("UT");
+        ArrayPhaseInjected.add("PM");
+
+        ArrayPhaseRemoved = new ArrayList<>();
+        ArrayPhaseRemoved.add("Phase removed");
+        ArrayPhaseRemoved.add("PLAN");
+        ArrayPhaseRemoved.add("DLD");
+        ArrayPhaseRemoved.add("CODE");
+        ArrayPhaseRemoved.add("COMPILE");
+        ArrayPhaseRemoved.add("UT");
+        ArrayPhaseRemoved.add("PM");
+
+        listaType = vista.findViewById(R.id.spinnerType);
+        ArrayAdapter<CharSequence> adapterType = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,ArrayType);
+        listaType.setAdapter(adapterType);
+        listaType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0){
+                    setType(ArrayType.get(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        listaPhaseInjected = vista.findViewById(R.id.spinnerPhaseInjected);
+        ArrayAdapter<CharSequence> adapterPhaseInjected = new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item,ArrayPhaseInjected);
+        listaPhaseInjected.setAdapter(adapterPhaseInjected);
+        listaPhaseInjected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0){
+                    setPhaseInjected(ArrayPhaseInjected.get(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        listaPhaseRemoved = vista.findViewById(R.id.spinnerPhaseRemoved);
+        ArrayAdapter<CharSequence> adapterPhaseRemoved = new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item,ArrayPhaseRemoved);
+        listaPhaseRemoved.setAdapter(adapterPhaseRemoved);
+        listaPhaseRemoved.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0){
+                    setPhaseRemoved(ArrayPhaseRemoved.get(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        return vista;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

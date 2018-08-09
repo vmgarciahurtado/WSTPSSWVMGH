@@ -16,9 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".principal.Principal"
-            android:parentActivityName=".principal.MainActivity"/>
-        <activity android:name=".principal.Secundaria"
+        <activity
+            android:name=".principal.Principal"
+            android:parentActivityName=".principal.MainActivity" />
+        <activity
+            android:name=".principal.Secundaria"
+            android:parentActivityName=".principal.Principal" />
+        <activity
+            android:name=".principal.Main2Activity"
+            android:label="TSP/PSP"
+
             android:parentActivityName=".principal.Principal"></activity>
     </application>
 

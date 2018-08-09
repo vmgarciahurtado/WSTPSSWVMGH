@@ -1,4 +1,4 @@
-package com.example.victorm.tsppsp.fragments;
+package com.example.victorm.tsppsp.tabed;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,23 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.example.victorm.tsppsp.R;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TimeLog.OnFragmentInteractionListener} interface
+ * {@link DefectsRemoveInPhase.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TimeLog#newInstance} factory method to
+ * Use the {@link DefectsRemoveInPhase#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TimeLog extends Fragment {
+public class DefectsRemoveInPhase extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,20 +29,8 @@ public class TimeLog extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    String fase;
 
-    public String getFase() {
-        return fase;
-    }
-
-    public void setFase(String fase) {
-        this.fase = fase;
-    }
-
-    ArrayList<String>ArrayFase;
-    Spinner listaFases;
-
-    public TimeLog() {
+    public DefectsRemoveInPhase() {
         // Required empty public constructor
     }
 
@@ -57,11 +40,11 @@ public class TimeLog extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TimeLog.
+     * @return A new instance of fragment DefectsRemoveInPhase.
      */
     // TODO: Rename and change types and number of parameters
-    public static TimeLog newInstance(String param1, String param2) {
-        TimeLog fragment = new TimeLog();
+    public static DefectsRemoveInPhase newInstance(String param1, String param2) {
+        DefectsRemoveInPhase fragment = new DefectsRemoveInPhase();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -82,35 +65,7 @@ public class TimeLog extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista = inflater.inflate(R.layout.fragment_time_log, container, false);
-        ArrayFase = new ArrayList<>();
-        ArrayFase.add("Phase");
-        ArrayFase.add("PLAN");
-        ArrayFase.add("DLD");
-        ArrayFase.add("CODE");
-        ArrayFase.add("COMPILE");
-        ArrayFase.add("UT");
-        ArrayFase.add("PM");
-
-        listaFases = vista.findViewById(R.id.spinnerFase);
-        ArrayAdapter<CharSequence> adapterFase = new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, ArrayFase);
-        listaFases.setAdapter(adapterFase);
-        listaFases.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0){
-                    setFase(ArrayFase.get(position));
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        return vista;
+        return inflater.inflate(R.layout.fragment_defects_remove_in_phase, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

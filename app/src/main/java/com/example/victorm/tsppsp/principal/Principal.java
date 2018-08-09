@@ -33,9 +33,11 @@ public class Principal extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),Secundaria.class);
         switch (view.getId()){
             case R.id.btnProject:
-                miBundle.putInt("pantalla",1);
-                intent.putExtra("glass",miBundle);
-                startActivity(intent);
+                //miBundle.putInt("pantalla",1);
+                //intent.putExtra("glass",miBundle);
+                //startActivity(intent);
+                Intent intent2 = new Intent(getApplicationContext(),Main2Activity.class);
+                startActivity(intent2);
                 break;
             case R.id.btnDefectlog:
                 miBundle.putInt("pantalla",2);

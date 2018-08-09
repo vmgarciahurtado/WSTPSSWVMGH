@@ -1,17 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    android:paddingTop="12dp"
+    android:layout_height="wrap_content"
     tools:context=".fragments.DefectLog">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:textColor="#000"
         android:textSize="23dp"
+        android:layout_marginBottom="22dp"
         android:text="DEFECT LOG" />
 
-</FrameLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3">
+
+        <Button
+            android:id="@+id/btnDateDefectlog"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="0"
+            android:background="@color/common_green"
+            android:text="DATE"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/campoDateDefectlog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="3"
+            android:layout_marginLeft="12dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:text="DATE"
+            android:textColor="#000"
+            android:textSize="23dp" />
+
+        <Spinner
+            android:id="@+id/spinnerType"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="3">
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/spinnerPhaseInjected"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="3">
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/spinnerPhaseRemoved"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="3"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"></Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="3"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="FIX TIME"
+            android:background="@color/colorPrimary"
+            android:textColor="#000"
+            android:textSize="23dp" />
+
+        <Button
+            android:id="@+id/btnStartDefectlog"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:background="@color/common_green"
+            android:text="Start"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="0"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btnStopDefectlog"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@color/common_green"
+            android:text="Stop"
+            android:layout_marginLeft="0dp"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="0"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btnRestartDefectlog"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@color/common_green"
+            android:layout_marginLeft="20dp"
+            android:text="Restart"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="0"
+            android:textColor="#fff" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="22dp"
+            android:gravity="center_horizontal"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="3"
+            android:hint="DEFECT DESCRIPTION"
+            android:textColor="#000"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/btnRegistrarTimeLog"
+            android:layout_height="match_parent"
+            android:background="@color/common_green"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="3"
+            android:text="SAVE"
+            android:textColor="#fff" />
+
+    </GridLayout>
+
+
+</LinearLayout>

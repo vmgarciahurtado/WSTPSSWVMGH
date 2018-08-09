@@ -1,5 +1,6 @@
 package com.example.victorm.tsppsp.principal;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +23,9 @@ public class Secundaria extends AppCompatActivity implements AllFragments{
 
         switch (miBundle.getInt("pantalla")){
             case 1:
-                miFragment = new ProjectPlanSumary();
-                getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,miFragment).commit();
+               // miFragment = new ProjectPlanSumary();
+               // getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,miFragment).commit();
+
                 break;
 
             case 2:
