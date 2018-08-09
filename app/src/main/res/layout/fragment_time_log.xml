@@ -1,17 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="13dp"
     tools:context=".fragments.TimeLog">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:gravity="center_horizontal"
+        android:text="TIME LOG"
         android:textColor="#000"
-        android:textSize="23dp"
-        android:text="TIME LOG" />
+        android:textSize="23dp" />
 
-</FrameLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow android:gravity="center">
+
+            <Spinner
+                android:id="@+id/spinnerFase"
+                android:layout_width="108dp"
+                android:layout_height="wrap_content"></Spinner>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/btnStartTimeLog"
+                android:layout_width="190dp"
+                android:layout_height="42dp"
+                android:background="@color/common_green"
+                android:text="start"
+                android:textColor="#fff" />
+
+            <TextView
+                android:layout_width="222dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="23dp"
+                android:text="START"
+                android:textColor="#000"
+                android:textSize="23dp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="12dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="222dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="23dp"
+                android:text="INTERRUPTION"
+                android:textColor="#000"
+                android:textSize="23dp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnStopTimeLog"
+                android:layout_width="211dp"
+                android:layout_height="42dp"
+                android:background="@color/common_green"
+                android:text="stop"
+                android:textColor="#fff" />
+
+            <TextView
+                android:layout_width="222dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="23dp"
+                android:text="START"
+                android:textColor="#000"
+                android:textSize="23dp" />
+        </TableRow>
+
+
+        <TableRow android:layout_marginTop="12dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="222dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="23dp"
+                android:text="DELTA"
+                android:textColor="#000"
+                android:textSize="23dp" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="12dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="222dp"
+                android:layout_height="122dp"
+                android:gravity="center"
+                android:layout_marginLeft="23dp"
+                android:text="COMMENTS"
+                android:textColor="#000"
+                android:textSize="23dp" />
+        </TableRow>
+
+
+    </TableLayout>
+
+</LinearLayout>
