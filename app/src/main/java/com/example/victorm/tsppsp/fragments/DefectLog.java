@@ -9,11 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.victorm.tsppsp.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +44,10 @@ public class DefectLog extends Fragment {
     String type;
     String phaseInjected;
     String phaseRemoved;
+
+    Button btnDate,btnRegistrar,btnStart,btnStop,btnRestart;
+    TextView campoDate;
+    EditText txtDefectDescription;
 
     public String getType() {
         return type;
@@ -188,6 +198,23 @@ public class DefectLog extends Fragment {
 
             }
         });
+
+
+        btnDate = vista.findViewById(R.id.btnDateDefectlog);
+        btnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                Date date = new Date();
+                String fecha = dateFormat.format(date);
+                campoDate.setText(fecha);
+            }
+        });
+        btnStart = vista.findViewById(R.id.btnStartDefectlog);
+        btnStop = vista.findViewById(R.id.btnStopDefectlog);
+        btnRestart = vista.findViewById(R.id.btnRestartDefectlog);
+
+        campoDate = vista.findViewById(R.id.campoDateDefectlog);
 
         return vista;
     }

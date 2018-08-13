@@ -26,8 +26,9 @@
 
         <Button
             android:id="@+id/btnDateDefectlog"
-            android:layout_width="133dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
             android:layout_columnWeight="0"
             android:background="@color/common_green"
             android:text="DATE"
@@ -38,38 +39,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnSpan="2"
-            android:layout_columnWeight="3"
-            android:layout_marginLeft="12dp"
+            android:layout_columnWeight="2"
             android:background="@color/colorPrimary"
-            android:gravity="center_horizontal"
             android:text="DATE"
             android:textColor="#000"
             android:textSize="23dp" />
 
         <Spinner
             android:id="@+id/spinnerType"
-            android:layout_width="108dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnSpan="3"
+            android:layout_columnSpan="2"
             android:layout_columnWeight="3">
         </Spinner>
 
         <Spinner
             android:id="@+id/spinnerPhaseInjected"
-            android:layout_width="108dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnSpan="3"
+            android:layout_columnSpan="2"
             android:layout_columnWeight="3">
         </Spinner>
 
         <Spinner
             android:id="@+id/spinnerPhaseRemoved"
-            android:layout_width="108dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnSpan="3"
-            android:layout_columnWeight="3"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"></Spinner>
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="3">
+        </Spinner>
 
         <TextView
             android:layout_width="match_parent"
@@ -85,7 +83,7 @@
 
         <Button
             android:id="@+id/btnStartDefectlog"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:background="@color/common_green"
@@ -96,18 +94,18 @@
 
         <Button
             android:id="@+id/btnStopDefectlog"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/common_green"
             android:text="Stop"
-            android:layout_marginLeft="0dp"
+            android:layout_marginLeft="25dp"
             android:layout_columnSpan="1"
             android:layout_columnWeight="0"
             android:textColor="#fff" />
 
         <Button
             android:id="@+id/btnRestartDefectlog"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/common_green"
             android:layout_marginLeft="20dp"

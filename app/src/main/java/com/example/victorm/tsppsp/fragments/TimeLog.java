@@ -9,11 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.victorm.tsppsp.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +40,14 @@ public class TimeLog extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     String fase;
+
+
+
+    ////////
+    Button btnCapturarprimeraFechaTL,btnCapturarSegundaFechaTl,btnRegistrarTimelog;
+    TextView txtPrimeraFechaTl,txtSegundaFechaTl,txtDeltaTl;
+
+
 
     public String getFase() {
         return fase;
@@ -109,6 +122,35 @@ public class TimeLog extends Fragment {
 
             }
         });
+
+
+        btnCapturarprimeraFechaTL = vista.findViewById(R.id.btnStartTimeLog);
+        btnCapturarprimeraFechaTL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                Date date = new Date();
+                String fecha = dateFormat.format(date);
+                txtPrimeraFechaTl.setText(fecha);
+            }
+        });
+
+        btnCapturarSegundaFechaTl = vista.findViewById(R.id.btnStopTimeLog);
+        btnCapturarSegundaFechaTl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                Date date = new Date();
+                String fecha = dateFormat.format(date);
+                txtSegundaFechaTl.setText(fecha);
+                txtDeltaTl.setText("0000000");
+            }
+        });
+        btnRegistrarTimelog = vista.findViewById(R.id.btnRegistrarTimeLog);
+
+        txtPrimeraFechaTl = vista.findViewById(R.id.campoStartTimelog);
+        txtSegundaFechaTl = vista.findViewById(R.id.campoStopTimelog);
+        txtDeltaTl = vista.findViewById(R.id.campoDeltaTimelog);
 
         return vista;
     }

@@ -13,17 +13,17 @@
         android:layout_marginLeft="23dp"
         android:layout_marginRight="23dp">
 
-        <TableLayout
+        <GridLayout
             android:id="@+id/tablita"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp">
-
-            <TableRow>
+            android:layout_marginTop="22dp"
+            android:columnCount="3">
 
                 <EditText
                     android:id="@+id/campoRegistrarProyecto"
-                    android:layout_width="220dp"
+                    android:layout_width="wrap_content"
+                    android:layout_columnWeight="2"
                     android:hint="Registrar proyecto"
                     android:inputType="textPersonName" />
 
@@ -32,10 +32,11 @@
                     android:layout_marginLeft="22dp"
                     android:background="@color/common_green"
                     android:text="Registrar"
+                    android:layout_width="wrap_content"
+                    android:layout_columnWeight="1"
                     android:textColor="#fff" />
-            </TableRow>
 
-        </TableLayout>
+        </GridLayout>
 
     </LinearLayout>
 
