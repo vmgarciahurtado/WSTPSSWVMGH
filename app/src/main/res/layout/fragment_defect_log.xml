@@ -117,6 +117,7 @@
 
         <EditText
             android:layout_width="match_parent"
+            android:id="@+id/campoDefectDescriptionDefect"
             android:layout_height="wrap_content"
             android:layout_marginBottom="22dp"
             android:inputType="textMultiLine"

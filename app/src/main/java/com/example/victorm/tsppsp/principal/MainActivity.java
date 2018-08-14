@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        
         //////
         conn = new Conexion(getApplicationContext(),"db_proyectos",null,1);
         recyclerViewProyectos = findViewById(R.id.recyclerProyectos);

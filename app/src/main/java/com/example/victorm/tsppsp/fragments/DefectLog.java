@@ -1,6 +1,7 @@
 package com.example.victorm.tsppsp.fragments;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.victorm.tsppsp.R;
+import com.example.victorm.tsppsp.utilidades.Conexion;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,6 +42,16 @@ public class DefectLog extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    SQLiteDatabase db;
+    Conexion conn;
+
+    String dateR;
+    String typeR;
+    String phaseinjectedR;
+    String phaseremovedR;
+    String fixtimeR;
+    String defectdescriptionR;
 
     String type;
     String phaseInjected;
@@ -116,6 +128,7 @@ public class DefectLog extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_defect_log, container, false);
 
+        conn = new Conexion(getContext(),"db_proyectos",null,1);
         ArrayType = new ArrayList<>();
         ArrayType.add("Type");
         ArrayType.add("Documentation");
@@ -156,6 +169,7 @@ public class DefectLog extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0){
                     setType(ArrayType.get(position));
+                    typeR = ArrayType.get(position);
                 }
             }
 
@@ -173,6 +187,7 @@ public class DefectLog extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0){
                     setPhaseInjected(ArrayPhaseInjected.get(position));
+                    phaseinjectedR = ArrayPhaseInjected.get(position);
                 }
             }
 
@@ -190,6 +205,7 @@ public class DefectLog extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0){
                     setPhaseRemoved(ArrayPhaseRemoved.get(position));
+                    phaseremovedR = ArrayPhaseRemoved.get(position);
                 }
             }
 
@@ -207,16 +223,29 @@ public class DefectLog extends Fragment {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 Date date = new Date();
                 String fecha = dateFormat.format(date);
+                dateR = fecha;
                 campoDate.setText(fecha);
             }
         });
         btnStart = vista.findViewById(R.id.btnStartDefectlog);
         btnStop = vista.findViewById(R.id.btnStopDefectlog);
         btnRestart = vista.findViewById(R.id.btnRestartDefectlog);
-
+        btnRegistrar = vista.findViewById(R.id.btnRestartDefectlog);
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registrarDefectLog();
+            }
+        });
         campoDate = vista.findViewById(R.id.campoDateDefectlog);
+        txtDefectDescription = vista.findViewById(R.id.campoDefectDescriptionDefect);
 
         return vista;
+    }
+
+    private void registrarDefectLog() {
+        defectdescriptionR = txtDefectDescription.getText().toString();
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

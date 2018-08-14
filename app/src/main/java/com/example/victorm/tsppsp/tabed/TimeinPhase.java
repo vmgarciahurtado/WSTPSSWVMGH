@@ -1,6 +1,7 @@
 package com.example.victorm.tsppsp.tabed;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.victorm.tsppsp.R;
+import com.example.victorm.tsppsp.utilidades.Conexion;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +31,9 @@ public class TimeinPhase extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    SQLiteDatabase db;
+    Conexion conn;
 
     public TimeinPhase() {
         // Required empty public constructor
@@ -64,8 +69,15 @@ public class TimeinPhase extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_timein_phase, container, false);
+        View vista = inflater.inflate(R.layout.fragment_timein_phase, container, false);
+
+        conn = new Conexion(getContext(),"db_proyectos",null,1);
+        consultarDatos();
+        return vista;
+    }
+
+    private void consultarDatos() {
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

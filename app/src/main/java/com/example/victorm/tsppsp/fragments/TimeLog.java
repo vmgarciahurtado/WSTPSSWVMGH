@@ -1,19 +1,26 @@
 package com.example.victorm.tsppsp.fragments;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.victorm.tsppsp.R;
+import com.example.victorm.tsppsp.utilidades.Conexion;
+import com.example.victorm.tsppsp.utilidades.Datos;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,11 +47,87 @@ public class TimeLog extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     String fase;
+    String start;
+    String stop;
+    String interruption;
+    String delta;
 
+    public String getStart() {
+        return start;
+    }
 
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getStop() {
+        return stop;
+    }
+
+    public void setStop(String stop) {
+        this.stop = stop;
+    }
+
+    public String getInterruption() {
+        return interruption;
+    }
+
+    public void setInterruption(String interruption) {
+        this.interruption = interruption;
+    }
+
+    public String getDelta() {
+        return delta;
+    }
+
+    public void setDelta(String delta) {
+        this.delta = delta;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    String comments;
+
+    public int getFecha1() {
+        return fecha1;
+    }
+
+    public void setFecha1(int fecha1) {
+        this.fecha1 = fecha1;
+    }
+
+    public int getFecha2() {
+        return fecha2;
+    }
+
+    public void setFecha2(int fecha2) {
+        this.fecha2 = fecha2;
+    }
+
+    int fecha1;
+    int fecha2;
+    int fecha3;
+
+    public int getFecha3() {
+        return fecha3;
+    }
+
+    public void setFecha3(int fecha3) {
+        this.fecha3 = fecha3;
+    }
 
     ////////
+    SQLiteDatabase db;
+    Conexion conn;
+
     Button btnCapturarprimeraFechaTL,btnCapturarSegundaFechaTl,btnRegistrarTimelog;
+    EditText campoInterruption,campoComentario;
     TextView txtPrimeraFechaTl,txtSegundaFechaTl,txtDeltaTl;
 
 
@@ -95,6 +178,8 @@ public class TimeLog extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        conn = new Conexion(getContext(),"db_proyectos",null,1);
+
         View vista = inflater.inflate(R.layout.fragment_time_log, container, false);
         ArrayFase = new ArrayList<>();
         ArrayFase.add("Phase");
@@ -128,9 +213,11 @@ public class TimeLog extends Fragment {
         btnCapturarprimeraFechaTL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                capturarHorasFecha1();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 Date date = new Date();
                 String fecha = dateFormat.format(date);
+                setStart(fecha);
                 txtPrimeraFechaTl.setText(fecha);
             }
         });
@@ -139,20 +226,74 @@ public class TimeLog extends Fragment {
         btnCapturarSegundaFechaTl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                capturarHorasFecha2();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 Date date = new Date();
                 String fecha = dateFormat.format(date);
+                setStop(fecha);
                 txtSegundaFechaTl.setText(fecha);
-                txtDeltaTl.setText("0000000");
+
+                //txtDeltaTl.setText("0000000");
             }
         });
         btnRegistrarTimelog = vista.findViewById(R.id.btnRegistrarTimeLog);
-
+        btnRegistrarTimelog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registrarTimelog();
+            }
+        });
         txtPrimeraFechaTl = vista.findViewById(R.id.campoStartTimelog);
         txtSegundaFechaTl = vista.findViewById(R.id.campoStopTimelog);
         txtDeltaTl = vista.findViewById(R.id.campoDeltaTimelog);
+        campoInterruption = vista.findViewById(R.id.txtInterruptionTimelog);
+        campoComentario = vista.findViewById(R.id.txtComentarioTimelog);
 
         return vista;
+    }
+
+    private void capturarHorasFecha1() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("mm", Locale.getDefault());
+        Date date = new Date();
+        String fecha = dateFormat.format(date);
+        fecha1 = (Integer.parseInt(fecha));
+        Toast.makeText(getContext(),"horas " + fecha1,Toast.LENGTH_LONG).show();
+    }
+
+    private void capturarHorasFecha2() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("mm", Locale.getDefault());
+        Date date = new Date();
+        String fecha = dateFormat.format(date);
+        fecha3 = Integer.parseInt(campoInterruption.getText().toString());
+        setInterruption(campoInterruption.getText().toString());
+        //fecha3 = 1;
+        fecha2 = (Integer.parseInt(fecha));
+        int calculo = (fecha2-fecha1)-fecha3;
+        int calculo2 = (fecha2-fecha1);
+
+        setDelta(String.valueOf(calculo));
+        if (fecha3>calculo2){
+            Toast.makeText(getContext(),"EL tiempo de interrupcion es mayor al tiempo transcurrido,no se puede calcular el tiempo delta",Toast.LENGTH_LONG).show();
+        }else {
+            if (calculo>0){
+                txtDeltaTl.setText(((String.valueOf(calculo) + "  minutos")));
+            }else{
+                txtDeltaTl.setText(((String.valueOf(calculo) + "  segundos")));
+            }
+        }
+
+    }
+
+
+        private void registrarTimelog() {
+            setComments(campoComentario.getText().toString());
+
+            SQLiteDatabase db=conn.getWritableDatabase();
+            ContentValues values=new ContentValues();
+            values.put(Datos.CAMPO_PHASE,getFase() + Datos.CAMPO_START);
+            Long resultado=db.insert(Datos.TABLA_PROYECTOS,Datos.CAMPO_NOMBRE,values);
+            db.close();
+            Toast.makeText(getContext(),"¡¡ Registro exitoso !!",Toast.LENGTH_SHORT).show();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

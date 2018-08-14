@@ -102,7 +102,7 @@
             <TextView
                 android:id="@+id/campoDeltaTimelog"
                 android:layout_width="222dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="23dp"
                 android:gravity="center"
                 android:text="DELTA"
